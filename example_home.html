@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang='es'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <title>Las Tipas Boulevard - Morteros  </title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+  <link rel='stylesheet' href='./css/style.css'>
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,300;0,500;0,700;1,300;1,500;1,700&display=swap"
+    rel="stylesheet"> 
+
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+  crossorigin="anonymous"></script>
+
+  <script defer src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  <script defer src='./js/index.js'></script>
+  <script defer src='./js/home.js'></script>
+
+</head>
+
+<body class="bg-dark text-white">
+  
+ 
+
+  <header class=" mb-3 p-3 text-center w-100 mx-auto full-header">
+    <div class="shadow_top"></div> 
+    <div class="shadow_bottom"></div> 
+    <div class="shadow_left"></div> 
+    <div class="shadow_right"></div> 
+    
+    <nav class="navbar navbar-expand-lg navbar-dark w-75 mx-auto text-center">
+
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item mx-3">
+          <a class="nav-link" href="#inicio">Inicio</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link" aria-current="page" href="#cartelera">Cartelera</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link" aria-current="page" href="#estrenos">Próximos Estrenos</a>
+        </li>
+        <li class="nav-item mx-3">
+          <a class="nav-link" aria-current="page" href="#contacto">Contacto</a>
+        </li>
+      </ul>
+
+    </nav>
+
+    <div class="header mt-5">
+      <div class="banner">
+        <h1 class="fw-bold text-muted small text-uppercase main__title"> Las Tipas Boulevard - Morteros</h1>
+        <h2 class="fw-bold h1 mb-4 w-75 mx-auto">           
+          <span class="d-block"> 
+            Las peliculas del momento
+          </span>
+          <span class="d-block fw-bold"> 
+            En el<mark class="bg-transparent gradient-text">mejor cine</mark>de la zona
+          </span>
+          <!-- <span class="d-block"> 
+            Ven a disfrutar de un momento con amigos
+          </span>
+           -->
+        </h2>
+        <a href="#cartelera" class="btn rounded-1 btn-lg btn-outline-success border border-2 border-success fw-bold text-capitalize d-flex align-items-center justify-content-center mx-auto col-lg-3 col-md-4 col-sm-6 col-8">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-movie" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+            <line x1="8" y1="4" x2="8" y2="20"></line>
+            <line x1="16" y1="4" x2="16" y2="20"></line>
+            <line x1="4" y1="8" x2="8" y2="8"></line>
+            <line x1="4" y1="16" x2="8" y2="16"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="16" y1="8" x2="20" y2="8"></line>
+            <line x1="16" y1="16" x2="20" y2="16"></line>
+         </svg>
+          <span class="ms-2"> Ver cartelera de hoy </span>
+        </a>
+        <p class="h5 my-5 text-muted">
+          Disfruta en familia o amigos las mejores peliculas del momento
+        </p>
+      </div>
+    </div>
+
+  </header>
+
+  <main class="container-sm my-0">
+
+
+    <div class="my-5" id="cartelera">
+      <h2 class="fw-bold h3"> Peliculas en cartelera </h2>
+      <section class="carousel carousel-arrow my-3" id="dias" data-flickity='{  "contain": true, "pageDots": false  }'>
+
+      </section>
+
+      <div class="row mx-0 my-3 flex-justify-center" id="peliculas_cartelera">
+
+        <!-- <div class="col-lg-6 col-md-4 col-sm-12 col-8 border-r3-mq p-0 card border border-3 border-special bg-dark mb-3">
+          <div class="row g-0">
+            <div class="col-lg-5 col-md-12 col-sm-5">
+              <img src="./poster.jpg" class="img-fluid rounded" alt="...">
+            </div>
+            <div class="col-lg-7 col-md-12 col-sm-7">
+              <div class="card-body px-0 mx-0 pl-data-movie">
+                <h4 class="card-title fw-bold">El ocaso de una vida 1</h4>
+                
+                <mark class="rounded-1 text-success py-1 px-2 d-inline-block mb-2 tag-dark">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="18"
+                  height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <polyline points="12 7 12 12 15 15"></polyline>
+                  </svg>
+                  <span> 100 min </span>
+                </mark> 
+
+                <div class="d-flex flex-column gap-1 ms-1">
+                  <p class="small m-0 d-flex align-items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-muted" width="18"
+                      height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <circle cx="12" cy="12" r="9"></circle>
+                      <path d="M7 15v-5"></path>
+                      <path d="M15.5 12h3"></path>
+                      <path d="M17 10.5v3"></path>
+                      <path d="M10 10.5a1.5 1.5 0 0 1 3 0c0 .443 -.313 .989 -.612 1.393l-2.388 3.107h3"></path>
+                    </svg>
+                    <small> ATP </small>
+                  </p>
+                  <p class="small m-0 d-flex align-items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-muted" width="18"
+                      height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                      <line x1="8" y1="4" x2="8" y2="20"></line>
+                      <line x1="16" y1="4" x2="16" y2="20"></line>
+                      <line x1="4" y1="8" x2="8" y2="8"></line>
+                      <line x1="4" y1="16" x2="8" y2="16"></line>
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <line x1="16" y1="8" x2="20" y2="8"></line>
+                      <line x1="16" y1="16" x2="20" y2="16"></line>
+                    </svg>
+    
+                    <small> Infantil </small>
+                  </p>
+                  <p class="small m-0 d-flex align-items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-muted" width="18"
+                      height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M8 4h-2l-3 10"></path>
+                      <path d="M16 4h2l3 10"></path>
+                      <line x1="10" y1="16" x2="14" y2="16"></line>
+                      <path d="M21 16.5a3.5 3.5 0 0 1 -7 0v-2.5h7v2.5"></path>
+                      <path d="M10 16.5a3.5 3.5 0 0 1 -7 0v-2.5h7v2.5"></path>
+                    </svg>
+                    <small> 3D </small>
+                  </p>
+                  <p class="small m-0 d-flex align-items-center gap-1"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-muted" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <rect x="4" y="5" width="16" height="16" rx="2"></rect>
+                      <line x1="16" y1="3" x2="16" y2="7"></line>
+                      <line x1="8" y1="3" x2="8" y2="7"></line>
+                      <line x1="4" y1="11" x2="20" y2="11"></line>
+                      <rect x="8" y="15" width="2" height="2"></rect>
+                    </svg>  
+                    <small title="18/9/2022"> Estrenada hace 2 dias </small> 
+                  </p>
+                </div>
+    
+                  <a href="#comprar" title="Comprar entrada" class="btn btn-sm btn-outline-success my-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(90deg);" >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <line x1="15" y1="5" x2="15" y2="7"></line>
+                      <line x1="15" y1="11" x2="15" y2="13"></line>
+                      <line x1="15" y1="17" x2="15" y2="19"></line>
+                      <path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-3a2 2 0 0 0 0 -4v-3a2 2 0 0 1 2 -2"></path>
+                  </svg>
+    
+                    <span class="ms-1"> 
+                      18:00
+                    </span>
+                  </a>
+
+                <p class="text-muted mt-2"> 
+                  
+                  <small> <span class="text-success"> * </span> Indica que las funciones son subtituladas. </small>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="col-lg-6 col-md-4 col-sm-12 col-8 border-r3-mq p-0 card border border-3 border-special bg-dark mb-3">
+          <div class="row g-0">
+            <div class="col-lg-5 col-md-12 col-sm-5 ">
+              <img src="./poster.jpg" class="img-fluid rounded" alt="...">
+            </div>
+            <div class="col-lg-7 col-md-12 col-sm-7">
+              <div class="card-body px-0 mx-0 pl-data-movie">
+                <h4 class="card-title fw-bold mb-1">El ocaso de una vida 2</h4>
+          
+                <mark class="rounded-1 text-success py-1 px-2 d-inline-block mb-2 tag-dark">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="18"
+                  height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <polyline points="12 7 12 12 15 15"></polyline>
+                  </svg>
+                  <span> 100 min </span>
+                </mark>  
+    
+                <div class="d-flex flex-column gap-1 ms-1">
+                  <p class="small m-0 d-flex align-items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-muted" width="18"
+                      height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <circle cx="12" cy="12" r="9"></circle>
+                      <path d="M7 15v-5"></path>
+                      <path d="M15.5 12h3"></path>
+                      <path d="M17 10.5v3"></path>
+                      <path d="M10 10.5a1.5 1.5 0 0 1 3 0c0 .443 -.313 .989 -.612 1.393l-2.388 3.107h3"></path>
+                    </svg>
+                    <small> ATP </small>
+                  </p>
+                  <p class="small m-0 d-flex align-items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-muted" width="18"
+                      height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+                      <line x1="8" y1="4" x2="8" y2="20"></line>
+                      <line x1="16" y1="4" x2="16" y2="20"></line>
+                      <line x1="4" y1="8" x2="8" y2="8"></line>
+                      <line x1="4" y1="16" x2="8" y2="16"></line>
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <line x1="16" y1="8" x2="20" y2="8"></line>
+                      <line x1="16" y1="16" x2="20" y2="16"></line>
+                    </svg>
+    
+                    <small> Infantil </small>
+                  </p>
+                  <p class="small m-0 d-flex align-items-center gap-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-muted" width="18"
+                      height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                      
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <path d="M5.536 5.546l-2.536 8.454"></path>
+                      <path d="M16 4h2l3 10"></path>
+                      <path d="M10 16h4"></path>
+                      <path d="M19.426 19.423a3.5 3.5 0 0 1 -5.426 -2.923v-2.5m4 0h3v2.5c0 .157 -.01 .312 -.03 .463"></path>
+                      <path d="M10 16.5a3.5 3.5 0 0 1 -7 0v-2.5h7v2.5"></path>
+                      <path d="M3 3l18 18"></path>
+                    </svg>
+                    <small> 2D </small>
+                  </p>
+                  <p class="small m-0 d-flex align-items-center gap-1"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-muted" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                      <rect x="4" y="5" width="16" height="16" rx="2"></rect>
+                      <line x1="16" y1="3" x2="16" y2="7"></line>
+                      <line x1="8" y1="3" x2="8" y2="7"></line>
+                      <line x1="4" y1="11" x2="20" y2="11"></line>
+                      <rect x="8" y="15" width="2" height="2"></rect>
+                    </svg>  
+                    <small title="18/9/2022"> Estrenada hace 2 dias </small> 
+                  </p>
+                </div>
+
+
+                <a href="#comprar" title="Comprar entrada" class="btn btn-sm btn-outline-success my-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(90deg);" >
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                    <line x1="15" y1="5" x2="15" y2="7"></line>
+                    <line x1="15" y1="11" x2="15" y2="13"></line>
+                    <line x1="15" y1="17" x2="15" y2="19"></line>
+                    <path d="M5 5h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-3a2 2 0 0 0 0 -4v-3a2 2 0 0 1 2 -2"></path>
+                </svg>
+
+                  <span class="ms-1"> 
+                    18:00
+                  </span>
+                </a>
+
+                <p class="text-muted mt-2"> 
+                  <small> <span class="text-success"> * </span> Indica que las funciones son subtituladas. </small>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+       -->
+      
+
+      </div>
+    </div>
+
+
+    <div class="my-5" id="estrenos">
+      <h2 class="fw-bold h3"> Proximos estrenos </h2>
+      <section class="carousel-next-movies" id="next-movies" >
+
+        
+
+      </section> 
+    </div>
+   
+  </main>
+
+  <footer class="row mt-5 g-0 container mx-auto" style="min-height: 35vh;">
+    <div class="col-md-3">
+     
+      <nav class="navbar navbar-expand-lg navbar-dark ps-2">
+
+        <ul class="navbar-nav d-flex flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="#inicio">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#cartelera">Cartelera</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#estrenos">Próximos Estrenos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contacto">Contacto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#term">Términos y Condiciones</a>
+          </li>
+        </ul>
+  
+      </nav>
+
+    </div>
+    <div class="col-md-3">
+      <!-- <div class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div> -->
+    </div>
+    <div class="col-md-3">
+      
+    </div>
+    <div class="col-md-3">
+      
+    </div>
+  </footer>
+
+
+  <button class="btn btn-success position-fixed random-movie d-none " id="random-movie" style="right: 10px;bottom: 10px;z-index: 5;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-dice-5" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+      <circle cx="8.5" cy="8.5" r=".5" fill="currentColor"></circle>
+      <circle cx="15.5" cy="8.5" r=".5" fill="currentColor"></circle>
+      <circle cx="15.5" cy="15.5" r=".5" fill="currentColor"></circle>
+      <circle cx="8.5" cy="15.5" r=".5" fill="currentColor"></circle>
+      <circle cx="12" cy="12" r=".5" fill="currentColor"></circle>
+   </svg>
+    ¿No sabes que ver?
+  </button>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="--bs-modal-width: 575px" >
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark">
+        <div class="modal-header border border-bottom border-secondary border-opacity-10">
+          <h5 class="modal-title" id="exampleModalLabel">
+            Pelicula aleatoria
+          </h5>
+          <button type="button" class="btn-close" style="filter: invert(1);" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="movie-random-container">
+         
+        </div>
+        <div class="modal-footer border border-top border-secondary border-opacity-10">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-success">Confirmar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
