@@ -1,13 +1,13 @@
-import { Heading, Button, Box, Spinner } from "@chakra-ui/react";
-
+import { Box, Button, Heading } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-
-import Carousel from "../components/Carousel";
-import CarouselItem from "../components/CarouselItem";
 
 import { useFetch } from "../hooks/useFetch";
 
-const Section = ({ title, link, urlToFetch, children }) => {
+import Carousel from "./Carousel";
+import CarouselItem from "./Item";
+import Loader from "./Loader";
+
+const Section = ({ title, link, urlToFetch, children, ...props }) => {
   const { data, isLoading } = useFetch({
     url: urlToFetch,
   });
@@ -30,23 +30,16 @@ const Section = ({ title, link, urlToFetch, children }) => {
       {children ? children : null}
 
       {!children && isLoading ? (
-        <Box
-          h="100%"
-          w="100%"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <Spinner />
-        </Box>
+        <Loader />
       ) : (
         <Carousel>
-          {data?.results.map((item) => (
+          {data?.results?.map((item) => (
             <CarouselItem
+              size={props?.size}
               key={item.id}
-              urlToDetails={`${item.id}`}
+              urlToDetails={`${link}/${item.id}`}
               text={item?.title ?? item?.name ?? item?.original_name ?? ""}
-              imageURL={item.poster_path}
+              imageURL={item?.poster_path}
             />
           ))}
         </Carousel>

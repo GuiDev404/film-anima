@@ -1,4 +1,4 @@
-import { extendTheme, defineStyleConfig, color  } from "@chakra-ui/react";
+import { defineStyleConfig, extendTheme } from "@chakra-ui/react";
 
 const fonts = {
   heading: "Roboto, Inter, sans-serif",
@@ -38,24 +38,21 @@ const config = {
 };
 
 const Link = defineStyleConfig({
-  baseStyle: ({ theme })=> ({
-    fontWeight: 'bold',
+  baseStyle: ({ theme }) => ({
+    fontWeight: "bold",
     color: theme.colors.gray[500],
     _hover: {
-      textDecoration: 'none',
-      color: theme.colors.green[300]
-    }
+      textDecoration: "none",
+      color: theme.colors.green[300],
+    },
   }),
-}) 
+});
 
 const Button = defineStyleConfig({
   defaultProps: {
-    colorScheme: {
-     
-    }
-  }
-})
-
+    colorScheme: {},
+  },
+});
 
 const theme = extendTheme({
   config,
@@ -64,7 +61,7 @@ const theme = extendTheme({
   components: {
     Link,
     // Button
-  }
+  },
 });
 
 export default theme;

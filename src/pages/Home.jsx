@@ -1,126 +1,94 @@
-import { Box, Spinner, Text, VStack } from "@chakra-ui/react";
-import Carousel from "../components/Carousel";
-import CarouselItem from "../components/CarouselItem";
-import Section from "../components/Section";
-import { HOME_SECTIONS } from "../const/api";
-import { useFetch } from "../hooks/useFetch";
+import { useEffect, useState } from "react";
+import Banner from "../components/Banner";
+import Loader from "../components/Loader";
 
-const beforeHeader = {
-  content: '""',
-  position: "absolute",
-  top: "-20px",
-  left: 0,
-  width: "100%",
-  minHeight: "98vh",
-  background:
-    "url(https://cloudfront-us-east-1.images.arcpublishing.com/copesa/VYDQJXTQQBEHJGLJ6THDP3NESM.jpg) no-repeat center/cover",
-  filter: "contrast(100%)",
-  boxShadow: "none",
-};
+import Section from "../components/Section";
+import { SECTIONS } from "../const/app";
+import { useFetch } from "../hooks/useFetch";
+import { NRandom } from "../utils";
 
 const Home = () => {
+  const [random, setRandom] = useState(null);
+  const { data, isLoading } = useFetch({ url: SECTIONS[0].urlToFetch });
+
+  useEffect(() => {
+    if (!isLoading) {
+      setRandom(NRandom(data?.results?.length));
+    }
+  }, [isLoading]);
+
+  const itemRandom = !isLoading && random !== null && data?.results[random];
+
   return (
     <>
-      <Box as="header" _before={beforeHeader} height="100vh">
-        <Box
-          position="absolute"
-          left="0"
-          w="100%"
-          top="0"
-          boxShadow="21px 0 50px 45px #000"
-          height={0}
-        ></Box>
-        <Box
-          top="89vh"
-          left="0"
-          w="100%"
-          boxShadow="21px 62px 80px 100px #0d0d0d"
-          position="absolute"
-        ></Box>
-        <Box
-          top="0"
-          left="0"
-          w="0"
-          h="89vh"
-          boxShadow="21px 62px 90px 90px #0d0d0d"
-          position="absolute"
-        ></Box>
-        <Box
-          top="0"
-          right="0"
-          w="0"
-          h="89vh"
-          boxShadow="21px 62px 90px 90px #0d0d0d"
-          position="absolute"
-        ></Box>
-      </Box>
-
-      {/*     
-      <Section title="Trending Movies" link="/movies">
-        {trending_movies_loading ? (
-          <Box h='100%' w='100%' display='flex' alignItems='center' justifyContent='center'> 
-            <Spinner />
-          </Box>
-        ) : (
-          <Carousel>
-            {trending_movies?.results.map((item) => (
-              <CarouselItem
-                key={item.id}
-                urlToDetails={`movies/${item.id}`}  
-                text={item?.title ?? item?.name ?? item?.original_name ?? ''}
-                imageURL={item.poster_path}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <Banner backdrop={itemRandom?.backdrop_path}>
+          {/* <Box zIndex={10} maxW="container.lg" mt="7rem" mx="auto">
+          <Grid gridTemplateColumns="185px 1fr">
+            <GridItem>
+              <Item
+                size="sm"
+                imageURL="https://image.tmdb.org/t/p/original//ekstpH614fwDX8DUln1a2Opz0N8.jpg"
+                text=""
+                urlToDetails="/movies/278"
               />
-            ))}
-          </Carousel>
-        )}
-      </Section>
-    
-      <Section title="Top Rated Movies" link="/movies">
-        {top_rated_movies_loading ? (
-           <Box h='100%' w='100%' display='flex' alignItems='center' justifyContent='center'> 
-            <Spinner />
-          </Box>
-        ) : (
-          <Carousel>
-            {top_rated_movies?.results.map((item) => (
-              <CarouselItem
-                key={item.id}
-                urlToDetails={`movies/${item.id}`}  
-                text={item?.title ?? item?.name ?? item?.original_name ?? ''}
-                imageURL={item.poster_path}
-              />
-            ))}
-          </Carousel>
-        )}
-      </Section>
+            </GridItem>
+            <GridItem ml={2} alignSelf="end" mb={5}>
+              <Heading
+                ml={-2}
+                fontWeight={900}
+                as="h3"
+                mb={2}
+                size="2xl"
+                color="white.400"
+              >
+                Taxi Driver
+              </Heading>
+              <Heading mb={2} color="white" opacity=".8" size="md" as="h3">
+                Ryusuke Hamaguchi · Crimen, Drama
+              </Heading>
 
-      <Section title="Top Rated Series" link="/movies">
-        {top_rated_tv_loading ? (
-           <Box h='100%' w='100%' display='flex' alignItems='center' justifyContent='center'> 
-            <Spinner />
-          </Box>
-        ) : (
-          <Carousel>
-            {top_rated_tv?.results.map((item) => (
-              <CarouselItem
-                key={item.id}
-                urlToDetails={`series/${item.id}`}  
-                text={item?.title ?? item?.name ?? item?.original_name ?? ''}
-                imageURL={item.poster_path}
-              />
-            ))}
-          </Carousel>
-        )}
-      </Section>
-     */}
+              <HStack spacing={2}>
+                <Tag colorScheme="green" px={2.5} py={1.5}>
+                  adulticon SI
+                </Tag>
+                <Tag colorScheme="green" px={2.5} py={1.5}>
+                  Drama
+                </Tag>
+              </HStack>
+            </GridItem>
+          </Grid>
 
-      {HOME_SECTIONS.map((url, idx) => (
-        <Section key={idx} title="Popular Series" link="/movies" urlToFetch={url} />
+          <Text w={"85%"} color="gray.300" fontSize="1.1rem">
+            Un veterano con problemas de salud mental trabaja como taxista en
+            Nueva York, donde su percepción de la decadencia a su alrededor
+            alimenta su deseo de violencia.
+          </Text>
+
+          <Button
+            textTransform="uppercase"
+            fontSize="sm"
+            size="md"
+            colorScheme="green"
+            variant="outline"
+          >
+            See now
+          </Button>
+        </Box> */}
+        </Banner>
+      )}
+
+      {SECTIONS.map((section) => (
+        <Section
+          key={section.title}
+          title={section.title}
+          link={section.link}
+          urlToFetch={section.urlToFetch}
+          size={section?.size}
+        />
       ))}
-
-<Section title="Lorem" link="/">
-  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe sit, atque labore culpa possimus earum! Doloribus magnam harum accusantium nihil minima laboriosam reprehenderit quaerat consequatur, corrupti magni nemo nulla fugiat.</p>
-  </Section> 
     </>
   );
 };

@@ -1,14 +1,13 @@
 import {
-  Button,
   Box,
+  Button,
   Input,
   InputGroup,
-  InputRightAddon,
   InputRightElement,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { BiSearchAlt2 } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
+import { typeForApp } from "../utils";
 
 const Search = () => {
   const [keyword, setKeyword] = useState("");
@@ -26,14 +25,20 @@ const Search = () => {
     }
   };
 
-  const handleOnBlur = ()=> {
-    if(!keyword && location.pathname.includes('search')){
-      navigate(`/movies`);
+  const handleOnBlur = () => {
+    if (!keyword && location.pathname.includes("search")) {
+      navigate(`/${typeForApp()}`);
     }
-  }
+  };
 
   return (
-    <Box as="form" mx="auto" my={10} w={{ "md": "50%", "sm": "75%" }} onSubmit={handleSubmit}>
+    <Box
+      as="form"
+      mx="auto"
+      my={10}
+      w={{ md: "50%", sm: "75%" }}
+      onSubmit={handleSubmit}
+    >
       <InputGroup size="lg">
         <Input
           onBlur={handleOnBlur}
@@ -41,10 +46,8 @@ const Search = () => {
           _focusVisible={{ boxShadow: "green.200", borderColor: "green.200" }}
           value={keyword}
           onChange={handleChange}
-          // errorBorderColor={!keyword ? 'red.300' : 'none'}
           placeholder="Enter keyword..."
         />
-        {/* <InputRightAddon as='button' type="submit" children={<Icon as={BiSearchAlt2} fontSize="2xl" />} /> */}
 
         <InputRightElement width="5.5rem" pr=".5rem">
           <Button h="2rem" size="md" type="submit">

@@ -1,18 +1,17 @@
-import { Box, Button, Container, Heading, Link } from "@chakra-ui/react";
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Container } from "@chakra-ui/react";
+import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Results from "./components/Results";
 import Details from "./pages/Details";
 import Home from "./pages/Home";
 import Movies from "./pages/Movies";
-import Results from "./pages/Results";
+import NotFound from "./pages/NotFound";
 import Series from "./pages/Series";
 
 function App() {
   return (
     <>
- 
-        <Navbar />
-   
+      <Navbar />
 
       <Container maxW="container.xl">
         <Routes>
@@ -32,7 +31,7 @@ function App() {
 
           <Route path="series/:id" element={<Details />} />
 
-          <Route path="/*" element={<h1>404</h1>} />
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </Container>
     </>

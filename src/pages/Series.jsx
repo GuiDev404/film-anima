@@ -1,6 +1,6 @@
-import React from 'react'
-import { Outlet, Route, Routes } from 'react-router-dom'
-import Search from '../components/Search'
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Search from "../components/Search";
 
 const Series = () => {
   return (
@@ -8,7 +8,7 @@ const Series = () => {
       <Search />
       <Outlet />
     </>
-  )
-}
+  );
+};
 
-export default Series
+export default Series;

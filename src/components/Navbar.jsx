@@ -1,5 +1,5 @@
-import { Box, Button, Heading, Link, Container } from "@chakra-ui/react";
-import { NavLink, Link as LinkRouter } from "react-router-dom";
+import { Box, Button, Container, Heading, Link } from "@chakra-ui/react";
+import { Link as LinkRouter, NavLink } from "react-router-dom";
 import theme from "../const/theme";
 
 const activeLink = ({ isActive }) => ({
@@ -23,11 +23,9 @@ const Navbar = () => {
         alignItems="center"
         w="100%"
       >
-        <LinkRouter to="/">
-          <Heading fontSize="1.5rem" color="green.200">
-            FilmAnima
-          </Heading>
-        </LinkRouter>
+        <Heading fontSize="1.5rem" color="green.200">
+          <LinkRouter to="/">FilmAnima</LinkRouter>
+        </Heading>
 
         <Box
           as="nav"
@@ -35,7 +33,7 @@ const Navbar = () => {
           display="flex"
           justifyContent="space-between"
           alignItems="center"
-          fontSize='lg'
+          fontSize="lg"
         >
           <Link as={NavLink} to="/" style={activeLink}>
             Home
