@@ -3,7 +3,7 @@ import { Box, Spinner } from "@chakra-ui/react";
 const Loader = () => {
   return (
     <Box
-      h="80vh"
+      h="70vh"
       w="100%"
       display="flex"
       alignItems="center"

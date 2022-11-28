@@ -1,94 +1,62 @@
-import {
-  AspectRatio,
-  Box,
-  Button,
-  Grid,
-  GridItem,
-  Heading,
-  HStack,
-  Icon,
-  IconButton,
-  Link,
-  Spinner,
-  Tag,
-  Text,
-} from "@chakra-ui/react";
-
-import { FiExternalLink, FiPlus } from "react-icons/fi";
 import { useParams } from "react-router-dom";
+import { AspectRatio, Box, Button, Grid, GridItem, Heading, HStack, Icon, IconButton, Link, Tag, Text } from "@chakra-ui/react";
+import { FiExternalLink, FiPlus } from "react-icons/fi";
+
 import Banner from "../components/Banner";
 import Item from "../components/Item";
 import Loader from "../components/Loader";
 import Section from "../components/Section";
-import { API_KEY } from "../const/api";
-import { useFetch } from "../hooks/useFetch";
-import { minToHours, typeForApi } from "../utils";
+
+import useDetails from "../hooks/useDetails";
+import { minToHours } from "../utils";
 
 const Details = () => {
   const { id } = useParams();
-  const TYPE_FOR_API = typeForApi();
-  console.log(TYPE_FOR_API);
-  const ITEM = `https://api.themoviedb.org/3/${TYPE_FOR_API}/${id}?api_key=${API_KEY}`;
-  const VIDEOS = `https://api.themoviedb.org/3/${TYPE_FOR_API}/${id}/videos?api_key=${API_KEY}`;
-  const CREDITS = `https://api.themoviedb.org/3/${TYPE_FOR_API}/${id}/credits?api_key=${API_KEY}`;
-  const RELATIONATED = `https://api.themoviedb.org/3/${TYPE_FOR_API}/${id}/similar?api_key=${API_KEY}`;
+  const { details, error, isLoading, type } = useDetails({ id })
+  const [ detailData, credits, videos, relationed ] = details; 
 
-  const {
-    data: itemData,
-    isLoading: loadingData,
-    error: errorData,
-  } = useFetch({ url: ITEM });
-  console.log({ ITEM });
-  const {
-    data: videoData,
-    isLoading: loadingVideos,
-    error: errorVideos,
-  } = useFetch({ url: VIDEOS });
+  if(isLoading) return  <Loader />
 
-  return (
-    <>
-      {loadingData ? (
-        <Loader />
-      ) : (
-        <Banner backdrop={itemData?.backdrop_path ?? itemData?.poster_path}>
-          <Box zIndex={10} maxW="container.lg" mt="3rem" mx="auto">
-            <Grid gridTemplateColumns="185px 1fr">
-              <GridItem>
-                <Item
-                  noBorder
-                  size="sm"
-                  imageURL={itemData?.poster_path}
-                  text=""
-                  urlToDetails=""
-                />
-              </GridItem>
-              <GridItem ml={2} alignSelf="end" mb={5}>
-                <Heading
-                  ml={-2}
-                  fontWeight={900}
-                  as="h3"
-                  mb={2}
-                  size="2xl"
-                  color="white.400"
-                >
-                  {itemData?.title ??
-                    itemData?.original_title ??
-                    itemData?.name}
-                </Heading>
+  return <>
+    <Banner backdrop={detailData?.backdrop_path ?? detailData?.poster_path}>
+        <Box zIndex={10} maxW="container.lg" mt="3rem" mx="auto">
+          <Grid gridTemplateColumns="185px 1fr">
+            <GridItem>
+              <Item
+                noBorder
+                size="sm"
+                imageURL={detailData?.poster_path}
+                text=""
+                urlToDetails=""
+              />
+            </GridItem>
+            <GridItem ml={2} alignSelf="end" mb={5}>
+              <Heading
+                ml={-2}
+                fontWeight={900}
+                as="h3"
+                mb={2}
+                size="2xl"
+                color="white.400"
+              >
+                {detailData?.title ??
+                  detailData?.original_title ??
+                  detailData?.name}
+              </Heading>
 
-                <Heading mb={2} color="white" opacity=".8" size="sm">
-                  Ryusuke Hamaguchi
-                  <Text as="span" mx={2}>
-                    {" "}
-                    ·{" "}
-                  </Text>
-                  {TYPE_FOR_API === "tv"
-                    ? `${itemData?.number_of_seasons} seasons`
-                    : minToHours(itemData?.runtime)}
-                </Heading>
+              <Heading mb={2} color="white" opacity=".8" size="sm">
+                Ryusuke Hamaguchi
+                <Text as="span" mx={2}>
+                  {" "}
+                  ·{" "}
+                </Text>
+                {type === "tv"
+                  ? `${detailData?.number_of_seasons} seasons`
+                  : minToHours(detailData?.runtime)}
+              </Heading>
 
                 <HStack spacing={2}>
-                  {itemData?.genres?.map((genre) => (
+                  {detailData?.genres?.map((genre) => (
                     <Tag
                       size="sm"
                       key={genre?.id}
@@ -104,7 +72,7 @@ const Details = () => {
             </Grid>
 
             <Text w={"85%"} color="gray.200" fontSize="1.1rem">
-              {itemData?.overview}
+              {detailData?.overview}
             </Text>
 
             <HStack mt={4}>
@@ -126,9 +94,9 @@ const Details = () => {
             </HStack>
           </Box>
         </Banner>
-      )}
-
-      <Box marginTop="-5rem" mb={10} className="row">
+  
+        {/* DATA SECTION */}
+        <Box marginTop="-5rem" mb={10} zIndex={9999}   className="row">
         <div className="col-md-3">
           <p className="fw-bold mb-0"> Pais </p>
           <p className="text-secondary" id="pais__origen">
@@ -159,26 +127,26 @@ const Details = () => {
         </div>
       </Box>
 
+      {/* TRAILERS SECTION */}
+      
       <Box as="section">
         <Heading size="lg" mb={5}>
           {" "}
           Trailers availables{" "}
         </Heading>
-        {loadingVideos ? (
-          <Spinner />
-        ) : (
+    
           <Box
             spacing={2}
             display="grid"
             gridTemplateColumns="repeat(auto-fit, minmax(200px, 49%))"
             gap={2}
           >
-            {videoData?.results?.length === 0 && (
+            {videos?.results?.length === 0 && (
               <Text color="gray.400" fontSize="lg">
                 No trailers available. Search in{" "}
                 <Link
                   href={`https://www.youtube.com/results?search_query=Trailer+${
-                    itemData.original_title
+                    detailData?.original_title ?? detailData?.title ?? detailData?.name
                   } (${new Date("2010-12-13").getFullYear()})`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -188,7 +156,7 @@ const Details = () => {
                 </Link>
               </Text>
             )}
-            {videoData?.results
+            {videos?.results
               .filter((_, idx) => idx < 2)
               .map((video) => (
                 <AspectRatio
@@ -208,16 +176,21 @@ const Details = () => {
                 </AspectRatio>
               ))}
           </Box>
-        )}
       </Box>
 
-      <Section
-        title={"Relationed"}
-        link={TYPE_FOR_API === "movie" ? "/movies" : "/series"}
-        urlToFetch={RELATIONATED}
-      />
-    </>
-  );
+      {/* RELATIONATED SECTION */}
+      {isLoading
+        ? <Loader />
+        : relationed && <Section
+            title={"Relationed"}
+            link={type === 'movie' ? "/movies" : "/series"}
+            section={relationed?.results}
+          />
+      }
+     
+  </>
+
+
 };
 
 export default Details;

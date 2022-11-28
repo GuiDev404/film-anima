@@ -48,13 +48,13 @@ const Link = defineStyleConfig({
   }),
 });
 
-const Button = defineStyleConfig({
-  defaultProps: {
-    colorScheme: {},
-  },
-});
+// const Button = defineStyleConfig({
+//   defaultProps: {
+//     colorScheme: {},
+//   },
+// });
 
-const theme = extendTheme({
+export const theme = extendTheme({
   config,
   fonts,
   colors,
@@ -64,4 +64,3 @@ const theme = extendTheme({
   },
 });
 
-export default theme;

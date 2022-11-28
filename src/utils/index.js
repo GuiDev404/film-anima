@@ -6,10 +6,4 @@ export function minToHours(minutes) {
   return `${h}h ${m}m`;
 }
 
-export const typeForApi = () =>
-  location.pathname.split("/").filter(Boolean)[0] === "movies" ? "movie" : "tv";
-
-export const typeForApp = () =>
-  location.pathname.includes("movies") ? "movies" : "series";
-
-export const NRandom = (max) => Math.floor(Math.random() * max);
+export const randomNumber = (max) => Math.floor(Math.random() * max);

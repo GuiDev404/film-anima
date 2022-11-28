@@ -1,9 +1,11 @@
 import { Image, Link, Text, VStack } from "@chakra-ui/react";
 import { Link as LinkRouter } from "react-router-dom";
 import noPoster from "../assets/no-poster.png";
-import { SIZES } from "../const/app";
+import { CARD_SIZES } from "../const";
 
 const Item = ({ text, imageURL, urlToDetails, size = "md", noBorder } = {}) => {
+  const { h, maxW } = CARD_SIZES[size];
+
   return (
     <VStack
       height="100%"
@@ -21,8 +23,8 @@ const Item = ({ text, imageURL, urlToDetails, size = "md", noBorder } = {}) => {
           alt={text}
           rounded="md"
           shadow={noBorder ? "md" : "none"}
-          height={SIZES[size]?.h}
-          maxWidth={SIZES[size]?.maxW}
+          height={h}
+          maxWidth={maxW}
           // loading="lazy"
         />
         <Text py={2} fontSize={size}>

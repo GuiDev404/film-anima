@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { BEFORE_HEADER } from "../const/app";
+import { BEFORE_HEADER } from "../const";
 
 const Banner = ({ backdrop, children }) => {
   const background = backdrop

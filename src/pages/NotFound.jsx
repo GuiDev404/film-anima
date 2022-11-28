@@ -1,21 +1,36 @@
-import { Box, Heading, Link, Text } from "@chakra-ui/react";
-import { Link as LinkRouter } from "react-router-dom";
+import { Button, Flex, Heading, Stack, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <Box minH="80vh" display="flex" justifyContent="center" alignItems="center">
-      <Box>
-        <Heading as="h1" size="3xl" color="green.300">
-          Not Found
+    <Flex maxW='container.md' mx='auto' minH="95vh" mt='-10' justifyContent="center" alignItems="center">
+      <Stack spacing={4} direction="column" alignItems="center">
+        <Heading ml="-1" color='green.300' as="h1" fontWeight="800" fontSize="9xl">
+          Oops!
         </Heading>
-        <Text color="gray.400" fontSize="lg">
-          Lo sentimos la pagina no existe.{" "}
-          <Link as={LinkRouter} fontWeight="normal" to="/" color="green.200">
-            Volver al inicio{" "}
-          </Link>
+        <Heading
+          as="h2"
+          color="gray.600"
+          fontSize="3xl"
+          textTransform="uppercase"
+        >
+          404 - page not found
+        </Heading>
+        <Text textAlign='center' color="gray.600">
+          La pagina que intenta buscar no esta disponible, porque fue eliminada o hubo un error de tipeo en la URL, controle esta ultima accion. Si no es asi lo sentimos puede volver al inicio haciendo click en el siguiente boton.
         </Text>
-      </Box>
-    </Box>
+        <Button
+          as={Link} to='/' 
+          textTransform="uppercase"
+          fontSize="sm"
+          w='fit-content'
+          _hover={{ bg: 'green.200', color: 'gray.900' }}
+          _active={{ bg: 'green.300', color: 'black' }}
+        >
+          go to homepage
+        </Button>
+      </Stack>
+    </Flex>
   );
 };
 

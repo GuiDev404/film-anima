@@ -1,17 +1,11 @@
 import { Box, Button, Heading } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
-import { useFetch } from "../hooks/useFetch";
-
 import Carousel from "./Carousel";
 import CarouselItem from "./Item";
-import Loader from "./Loader";
 
-const Section = ({ title, link, urlToFetch, children, ...props }) => {
-  const { data, isLoading } = useFetch({
-    url: urlToFetch,
-  });
-
+const Section = ({ title, link, section, children, ...props }) => {
+ 
   return (
     <Box as="section" my={50} minHeight="350px" height="auto">
       <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -27,13 +21,11 @@ const Section = ({ title, link, urlToFetch, children, ...props }) => {
         )}
       </Box>
 
-      {children ? children : null}
-
-      {!children && isLoading ? (
-        <Loader />
-      ) : (
+      {children 
+        ? children
+        : 
         <Carousel>
-          {data?.results?.map((item) => (
+          {section.map((item) => (
             <CarouselItem
               size={props?.size}
               key={item.id}
@@ -43,7 +35,10 @@ const Section = ({ title, link, urlToFetch, children, ...props }) => {
             />
           ))}
         </Carousel>
-      )}
+      }
+
+ 
+      
     </Box>
   );
 };

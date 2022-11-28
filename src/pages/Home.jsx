@@ -1,31 +1,20 @@
-import { useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import Loader from "../components/Loader";
-
 import Section from "../components/Section";
+
+import useHome from "../hooks/useHome";
 import { SECTIONS } from "../const/app";
-import { useFetch } from "../hooks/useFetch";
-import { NRandom } from "../utils";
 
 const Home = () => {
-  const [random, setRandom] = useState(null);
-  const { data, isLoading } = useFetch({ url: SECTIONS[0].urlToFetch });
+  const { sections: data, error, isLoading, movieRandom } = useHome();
+  const sections = !isLoading && data.map((section, i) => ({ ...SECTIONS[i], section }));
 
-  useEffect(() => {
-    if (!isLoading) {
-      setRandom(NRandom(data?.results?.length));
-    }
-  }, [isLoading]);
-
-  const itemRandom = !isLoading && random !== null && data?.results[random];
-
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <Banner backdrop={itemRandom?.backdrop_path}>
-          {/* <Box zIndex={10} maxW="container.lg" mt="7rem" mx="auto">
+      <Banner backdrop={movieRandom?.backdrop_path}>
+        {/* <Box zIndex={10} maxW="container.lg" mt="7rem" mx="auto">
           <Grid gridTemplateColumns="185px 1fr">
             <GridItem>
               <Item
@@ -77,16 +66,15 @@ const Home = () => {
             See now
           </Button>
         </Box> */}
-        </Banner>
-      )}
+      </Banner>
 
-      {SECTIONS.map((section) => (
+      {sections.map(({ title, link, section, size }) => (
         <Section
-          key={section.title}
-          title={section.title}
-          link={section.link}
-          urlToFetch={section.urlToFetch}
-          size={section?.size}
+          key={title}
+          title={title}
+          link={link}
+          section={section}
+          size={size}
         />
       ))}
     </>

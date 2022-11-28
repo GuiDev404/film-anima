@@ -1,12 +1,13 @@
-import { Box, Button, Container, Heading, Link } from "@chakra-ui/react";
+import { Box, Button, Container, Heading, Link, useTheme } from "@chakra-ui/react";
 import { Link as LinkRouter, NavLink } from "react-router-dom";
-import theme from "../const/theme";
-
-const activeLink = ({ isActive }) => ({
-  color: isActive ? theme.colors.green["200"] : theme.colors.gray["500"],
-});
 
 const Navbar = () => {
+  const { colors } = useTheme()
+
+  const activeLink = ({ isActive }) => ({
+    color: isActive ? colors.green["200"] : colors.gray["500"],
+  });
+
   return (
     <Container
       maxW="container.xl"

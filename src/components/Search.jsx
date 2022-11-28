@@ -6,11 +6,12 @@ import {
   InputRightElement,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { typeForApp } from "../utils";
+import { useMatch, useNavigate, useResolvedPath } from "react-router-dom";
 
 const Search = () => {
-  const [keyword, setKeyword] = useState("");
+  const resolvedPath =  useResolvedPath('./', { relative: 'route' })
+  const match = useMatch(`${resolvedPath.pathname}search/:keyword`)
+  const [keyword, setKeyword] = useState(match?.params?.keyword ?? "");
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -26,8 +27,10 @@ const Search = () => {
   };
 
   const handleOnBlur = () => {
-    if (!keyword && location.pathname.includes("search")) {
-      navigate(`/${typeForApp()}`);
+    const noInputSearch = Boolean(!keyword && match);
+    if (noInputSearch) {
+      const [ media ] = location.pathname.split('/', 2).filter(Boolean);
+      navigate(resolvedPath?.pathname ?? media);
     }
   };
 
@@ -41,10 +44,10 @@ const Search = () => {
     >
       <InputGroup size="lg">
         <Input
-          onBlur={handleOnBlur}
           type="text"
           _focusVisible={{ boxShadow: "green.200", borderColor: "green.200" }}
           value={keyword}
+          onBlur={handleOnBlur}
           onChange={handleChange}
           placeholder="Enter keyword..."
         />

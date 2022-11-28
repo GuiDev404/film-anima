@@ -1,5 +1,3 @@
-import { HOME_SECTIONS } from "../const/api";
-
 export const BEFORE_HEADER = {
   content: '""',
   position: "absolute",
@@ -14,18 +12,13 @@ export const BEFORE_HEADER = {
 };
 
 export const SECTIONS = [
-  {
-    title: "Trending movies",
-    link: "/movies",
-    urlToFetch: HOME_SECTIONS[0],
-    size: "lg",
-  },
-  { title: "Top Rated Movies", link: "/movies", urlToFetch: HOME_SECTIONS[1] },
-  { title: "Trending TV", link: "/series", urlToFetch: HOME_SECTIONS[2] },
-  { title: "Top Rated TV", link: "/series", urlToFetch: HOME_SECTIONS[3] },
+  { title: "Trending movies", link: "/movies", section: [], size: "lg", },
+  { title: "Top Rated Movies", link: "/movies", section: [] },
+  { title: "Trending TV", link: "/series", section: [] },
+  { title: "Top Rated TV", link: "/series", section: [] },
 ];
 
-export const SIZES = {
+export const CARD_SIZES = {
   sm: { h: "250px", maxW: "200px" },
   md: { h: "300px", maxW: "210px" },
   lg: { h: "375px", maxW: "285px" },
