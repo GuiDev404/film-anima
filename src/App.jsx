@@ -10,11 +10,14 @@ import Movies from "./pages/Movies";
 import NotFound from "./pages/NotFound";
 import Series from "./pages/Series";
 import ResultSeries from "./components/ResultSeries";
+import WatchSheet from "./components/WatchSheet";
 
 function App() {
   return (
     <>
       <Navbar />
+
+      <WatchSheet />
 
       <Container maxW="container.xl">
         <Routes>

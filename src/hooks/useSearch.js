@@ -7,8 +7,8 @@ const searchFor = {
   'tv': getSearchTv,
 }
 
-const useSearch = ({ keyword, page }) => {
-  const [data, setData] = useState([]);
+export const useSearch = ({ keyword, page }) => {
+  const [data, setData] = useState({ total_pages: 1, results: [] });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
     
@@ -20,7 +20,7 @@ const useSearch = ({ keyword, page }) => {
     setIsLoading(true)
 
     searchFor[type]({ page, keyword })
-      .then(data=> data?.results)
+      .then(data=> ({ total_pages: data.total_pages, results: data?.results }))
       .then(setData)
       .catch(setError)
       .finally(()=> setIsLoading(false))
@@ -34,5 +34,3 @@ const useSearch = ({ keyword, page }) => {
     type
   }
 }
-
-export default useSearch

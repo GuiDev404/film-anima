@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { getTrendingSeries } from '../services/getSeries';
 
 export const useTrendingSeries = ({ page = 1 } = {}) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({ total_pages: 1, results: [] });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
     
@@ -10,7 +10,7 @@ export const useTrendingSeries = ({ page = 1 } = {}) => {
     setIsLoading(true)
 
     getTrendingSeries({ page })
-      .then(data=> data?.results)
+      .then(data=> ({ total_pages: data.total_pages, results: data?.results }))
       .then(setData)
       .catch(setError)
       .finally(()=> setIsLoading(false))

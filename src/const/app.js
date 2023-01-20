@@ -19,7 +19,7 @@ export const SECTIONS = [
 ];
 
 export const CARD_SIZES = {
-  sm: { h: "250px", maxW: "200px" },
+  sm: { h: "250px", maxW: "170px" },
   md: { h: "300px", maxW: "210px" },
   lg: { h: "375px", maxW: "285px" },
 };

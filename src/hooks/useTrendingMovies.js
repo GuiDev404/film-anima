@@ -2,18 +2,21 @@ import { useEffect, useState } from 'react'
 import { getTrendingMovie } from '../services/getMovies';
 
 export const useTrendingsMovies = ({ page = 1 } = {}) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({ total_pages: 1, results: [] });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
     
   useEffect(()=> {
-    setIsLoading(true)
+    page === 1 && setIsLoading(true)
 
     getTrendingMovie({ page })
-      .then(data=> data?.results)
+      // SOLO LA PAGINA ACTUAL
+      .then(data=> ({ total_pages: data.total_pages, results: data?.results }))
+      // ACUMULAR LAS PAGINAS, LE FALTA EL VOLVER PARA ATRAS
+      // .then(data=> setData(prevData=> ({ ...data, results: [...prevData?.results, ...data.results] })))
       .then(setData)
       .catch(setError)
-      .finally(()=> setIsLoading(false))
+      .finally(()=> page === 1 && setIsLoading(false))
   }, [page])
 
   return {

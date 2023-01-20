@@ -4,25 +4,36 @@ import { Text } from "@chakra-ui/react";
 import Loader from "./Loader";
 import Results from "./Results";
 
-import useSearch from "../hooks/useSearch";
+import { usePagination, useSearch } from "../hooks";
+import { useEffect } from "react";
 
 const ResultsSearch = () => {
   const { keyword } = useParams();
-  const { data, error, isLoading } = useSearch({ keyword });
-
+  const { page, nextPage, prevPage, resetPage } = usePagination();
+  const { data, error, isLoading } = useSearch({ keyword, page });
+  
+  useEffect(()=> {
+    resetPage()
+  }, [keyword])
+  
+  const isMaxPage =  !isLoading && (page >= data?.total_pages);
+ 
   return isLoading ? (
     <Loader />
   ) : (
     <Results
-      data={data}
+      data={data?.results ?? []}
       fallbackMessage={
         <>
-          No results for{" "}
-          <Text as="strong" color="whiteAlpha.700">
-            {keyword}
-          </Text>
+          No results for
+          <Text as="strong" color="whiteAlpha.700"> {keyword} </Text>
         </>
       }
+      nextPage={nextPage}
+      prevPage={prevPage}
+      currentPage={page}
+      maxPage={data?.total_pages}
+      isMaxPage={isMaxPage}
     />
   );
 };

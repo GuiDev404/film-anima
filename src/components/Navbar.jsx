@@ -1,13 +1,16 @@
 import { Box, Button, Container, Heading, Link, useTheme } from "@chakra-ui/react";
 import { Link as LinkRouter, NavLink } from "react-router-dom";
+import useSheetView from "../hooks/useSheetView";
 
 const Navbar = () => {
+  const { openSheet } = useSheetView()
   const { colors } = useTheme()
 
   const activeLink = ({ isActive }) => ({
     color: isActive ? colors.green["200"] : colors.gray["500"],
   });
 
+ 
   return (
     <Container
       maxW="container.xl"
@@ -46,7 +49,7 @@ const Navbar = () => {
             Series
           </Link>
         </Box>
-        <Button colorScheme="green">Login</Button>
+        <Button colorScheme="green" onClick={openSheet} >Mis Listas</Button>
       </Box>
     </Container>
   );

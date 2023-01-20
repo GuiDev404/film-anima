@@ -5,7 +5,7 @@ import Carousel from "./Carousel";
 import CarouselItem from "./Item";
 
 const Section = ({ title, link, section, children, ...props }) => {
- 
+  
   return (
     <Box as="section" my={50} minHeight="350px" height="auto">
       <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -29,7 +29,7 @@ const Section = ({ title, link, section, children, ...props }) => {
             <CarouselItem
               size={props?.size}
               key={item.id}
-              urlToDetails={`${link}/${item.id}`}
+              urlToDetails={item?.urlToDetails ?? `${link}/${item.id}`}
               text={item?.title ?? item?.name ?? item?.original_name ?? ""}
               imageURL={item?.poster_path}
             />
