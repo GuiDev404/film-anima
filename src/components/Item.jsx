@@ -10,7 +10,6 @@ const Item = ({ text, imageURL, urlToDetails, size = "md", noBorder } = {}) => {
     <VStack
       height="100%"
       alignItems="start"
-      
       _hover={{
         "& img": { borderColor: noBorder ? "transparent" : "green.400" },
       }}
@@ -18,16 +17,12 @@ const Item = ({ text, imageURL, urlToDetails, size = "md", noBorder } = {}) => {
       <Link as={LinkRouter} to={urlToDetails} transition="none">
         <Image
           border={`${noBorder ? 0 : "3px"} solid transparent`}
-          src={
-            imageURL ? `https://image.tmdb.org/t/p/w342${imageURL}` : noPoster
-          }
+          src={imageURL ? `https://image.tmdb.org/t/p/w342${imageURL}` : noPoster}
           alt={text}
           rounded="md"
           shadow={noBorder ? "md" : "none"}
           height={h}
           maxWidth={maxW}
-          // maxWidth={'100%'}
-          // loading="lazy"
         />
         <Text py={2} fontSize={size} maxW={maxW} >
           {text}

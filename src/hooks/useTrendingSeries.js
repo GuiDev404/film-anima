@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getTrendingSeries } from '../services/getSeries';
+import { getTopRatedSeries } from '../services/getSeries';
 
 export const useTrendingSeries = ({ page = 1 } = {}) => {
   const [data, setData] = useState({ total_pages: 1, results: [] });
@@ -9,7 +9,7 @@ export const useTrendingSeries = ({ page = 1 } = {}) => {
   useEffect(()=> {
     setIsLoading(true)
 
-    getTrendingSeries({ page })
+    getTopRatedSeries({ page })
       .then(data=> ({ total_pages: data.total_pages, results: data?.results }))
       .then(setData)
       .catch(setError)

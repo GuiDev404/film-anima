@@ -1,13 +1,13 @@
 import { Box } from "@chakra-ui/react";
 import { BEFORE_HEADER } from "../const";
 
-const Banner = ({ backdrop, children }) => {
+const Banner = ({ backdrop, children, ...props }) => {
   const background = backdrop
     ? `url(https://image.tmdb.org/t/p/w1280${backdrop}) no-repeat center/cover`
     : "transparent no-repeat center/cover";
 
   return (
-    <Box as="header" _before={{ ...BEFORE_HEADER, background }} height="100vh">
+    <Box as="header" _before={{ ...BEFORE_HEADER, background }} minHeight="100vh" {...props}>
       <Box
         position="absolute"
         left="0"

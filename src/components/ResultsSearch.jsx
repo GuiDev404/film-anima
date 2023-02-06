@@ -1,26 +1,32 @@
-import { useParams } from "react-router-dom";
-import { Text } from "@chakra-ui/react";
+import { Navigate, useParams } from "react-router-dom";
+import { Heading, Text } from "@chakra-ui/react";
 
 import Loader from "./Loader";
 import Results from "./Results";
 
 import { usePagination, useSearch } from "../hooks";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 const ResultsSearch = () => {
   const { keyword } = useParams();
   const { page, nextPage, prevPage, resetPage } = usePagination();
   const { data, error, isLoading } = useSearch({ keyword, page });
   
-  useEffect(()=> {
-    resetPage()
-  }, [keyword])
+  // useEffect(()=> {
+  //   resetPage()
+  // }, [keyword])
   
-  const isMaxPage =  !isLoading && (page >= data?.total_pages);
+  const isMaxPage =  !isLoading && (parseInt(page, 10) >= data?.total_pages);
  
-  return isLoading ? (
-    <Loader />
-  ) : (
+  if (isLoading) return <Loader />;
+
+  if (error) {
+    if (error.statusCode === 404) return <Navigate to='/404' />;
+
+    return <Heading size='md'> {error.message} </Heading>;
+  }
+
+  return (
     <Results
       data={data?.results ?? []}
       fallbackMessage={

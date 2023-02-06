@@ -10,19 +10,19 @@ const NotFound = () => {
         </Heading>
         <Heading
           as="h2"
-          color="gray.600"
+          color="gray.400"
           fontSize="3xl"
           textTransform="uppercase"
         >
           404 - page not found
         </Heading>
-        <Text textAlign='center' color="gray.600">
+        <Text textAlign='center' color="gray.300">
           La pagina que intenta buscar no esta disponible, porque fue eliminada o hubo un error de tipeo en la URL, controle esta ultima accion. Si no es asi lo sentimos puede volver al inicio haciendo click en el siguiente boton.
         </Text>
         <Button
           as={Link} to='/' 
           textTransform="uppercase"
-          fontSize="sm"
+          fontSize="sm" 
           w='fit-content'
           _hover={{ bg: 'green.200', color: 'gray.900' }}
           _active={{ bg: 'green.300', color: 'black' }}

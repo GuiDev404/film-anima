@@ -28,9 +28,10 @@ const Search = () => {
 
   const handleOnBlur = () => {
     const noInputSearch = Boolean(!keyword && match);
+
     if (noInputSearch) {
       const [ media ] = location.pathname.split('/', 2).filter(Boolean);
-      navigate(resolvedPath?.pathname ?? media);
+      navigate(`${resolvedPath?.pathname ?? media}`);
     }
   };
 
@@ -49,12 +50,12 @@ const Search = () => {
           value={keyword}
           onBlur={handleOnBlur}
           onChange={handleChange}
-          placeholder="Enter keyword..."
+          placeholder="Ingrese su busqueda"
         />
 
         <InputRightElement width="5.5rem" pr=".5rem">
           <Button h="2rem" size="md" type="submit">
-            Search
+            Buscar
           </Button>
         </InputRightElement>
       </InputGroup>

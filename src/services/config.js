@@ -17,7 +17,7 @@ export async function request({ method, url, body }) {
   const data = await response.json();
   
   if (!response.ok) {
-    const errorMessage = data?.message ?? data?.error ?? 'Algo salio mal!';
+    const errorMessage = data?.message ?? data?.error ?? 'Lo sentimos! Algo salio mal, vuelve a intentar en un rato.';
     throw new RequestError(errorMessage, response.status);
   }
 

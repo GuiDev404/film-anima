@@ -7,7 +7,8 @@ export const useTrendingsMovies = ({ page = 1 } = {}) => {
   const [error, setError] = useState(null);
     
   useEffect(()=> {
-    page === 1 && setIsLoading(true)
+    setIsLoading(true)
+    // Number(page) === 1 && setIsLoading(true)
 
     getTrendingMovie({ page })
       // SOLO LA PAGINA ACTUAL
@@ -16,7 +17,8 @@ export const useTrendingsMovies = ({ page = 1 } = {}) => {
       // .then(data=> setData(prevData=> ({ ...data, results: [...prevData?.results, ...data.results] })))
       .then(setData)
       .catch(setError)
-      .finally(()=> page === 1 && setIsLoading(false))
+      // .finally(()=> Number(page) === 1 && setIsLoading(false))
+      .finally(()=> setIsLoading(false))
   }, [page])
 
   return {

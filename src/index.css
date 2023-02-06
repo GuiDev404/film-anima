@@ -1,0 +1,9 @@
+.ellipsis {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+} 
+
+.ellipsis-4 {
+  -webkit-line-clamp: 4;
+}

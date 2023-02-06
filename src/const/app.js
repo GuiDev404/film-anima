@@ -12,10 +12,10 @@ export const BEFORE_HEADER = {
 };
 
 export const SECTIONS = [
-  { title: "Trending movies", link: "/movies", section: [], size: "lg", },
-  { title: "Top Rated Movies", link: "/movies", section: [] },
-  { title: "Trending TV", link: "/series", section: [] },
-  { title: "Top Rated TV", link: "/series", section: [] },
+  { title: "Peliculas en tendencia", link: "/movies", section: [], size: "lg", },
+  { title: "Peliculas mas valoradas", link: "/movies", section: [] },
+  { title: "Series en tendencia", link: "/series", section: [] },
+  { title: "Series mas valoradas", link: "/series", section: [] },
 ];
 
 export const CARD_SIZES = {

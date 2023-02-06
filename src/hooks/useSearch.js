@@ -19,7 +19,7 @@ export const useSearch = ({ keyword, page }) => {
 
     setIsLoading(true)
 
-    searchFor[type]({ page, keyword })
+    searchFor[type]({ page: parseInt(page, 10), keyword })
       .then(data=> ({ total_pages: data.total_pages, results: data?.results }))
       .then(setData)
       .catch(setError)

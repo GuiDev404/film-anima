@@ -3,7 +3,7 @@ import { useMatch } from "react-router-dom";
 import Item from "./Item";
 import { GrFormPrevious, GrFormNext } from 'react-icons/gr';
 
-const Results = ({ data, fallbackMessage, nextPage = () => 1, prevPage = () => 1  ,isMaxPage, maxPage, currentPage }) => {
+const Results = ({ data, fallbackMessage, nextPage, prevPage, isMaxPage, maxPage, currentPage } = {}) => {
   const isMoviePage = useMatch("/movies/*");
   const basePathname = isMoviePage ? isMoviePage.pathnameBase : "/series";
 

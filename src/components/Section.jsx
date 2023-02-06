@@ -1,4 +1,4 @@
-import { Box, Button, Heading } from "@chakra-ui/react";
+import { Box, Button, Heading, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 import Carousel from "./Carousel";
@@ -9,7 +9,7 @@ const Section = ({ title, link, section, children, ...props }) => {
   return (
     <Box as="section" my={50} minHeight="350px" height="auto">
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <Heading size="lg" fontWeight="bold">
+        <Heading size={{ base: 'sm', sm: "lg" }} fontWeight="bold">
           {" "}
           {title}{" "}
         </Heading>
@@ -21,24 +21,24 @@ const Section = ({ title, link, section, children, ...props }) => {
         )}
       </Box>
 
-      {children 
-        ? children
-        : 
-        <Carousel>
-          {section.map((item) => (
-            <CarouselItem
-              size={props?.size}
-              key={item.id}
-              urlToDetails={item?.urlToDetails ?? `${link}/${item.id}`}
-              text={item?.title ?? item?.name ?? item?.original_name ?? ""}
-              imageURL={item?.poster_path}
-            />
-          ))}
-        </Carousel>
-      }
-
- 
       
+      {children && children}
+        
+      {section && section.length > 0
+        ? <Carousel>
+            {section.map((item) => (
+              <CarouselItem
+                size={props?.size}
+                key={item.id}
+                urlToDetails={item?.urlToDetails ?? `${link}/${item.id}`}
+                text={item?.title ?? item?.name ?? item?.original_name ?? ""}
+                imageURL={item?.poster_path}
+              />
+            ))}
+          </Carousel>
+        : <Text color='gray.500'> No hay peliculas relacionadas </Text>
+      }
+    
     </Box>
   );
 };
