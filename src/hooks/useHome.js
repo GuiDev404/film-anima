@@ -5,7 +5,6 @@ const useHome = () => {
   const [sections, setSections] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
- ;
 
   useEffect(()=> {
     setIsLoading(true)

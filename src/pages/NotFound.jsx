@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NotFound = () => {
   return (
-    <Flex maxW='container.md' mx='auto' minH="95vh" mt='-10' justifyContent="center" alignItems="center">
+    <Flex maxW='container.md' mx='auto' minH="100vh"  justifyContent="center" alignItems="center">
       <Stack spacing={4} direction="column" alignItems="center">
         <Heading ml="-1" color='green.300' as="h1" fontWeight="800" fontSize="9xl">
           Oops!

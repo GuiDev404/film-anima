@@ -36,7 +36,7 @@ const Section = ({ title, link, section, children, ...props }) => {
               />
             ))}
           </Carousel>
-        : <Text color='gray.500'> No hay peliculas relacionadas </Text>
+        : <Text color='gray.500'> No hay peliculas </Text>
       }
     
     </Box>

@@ -33,8 +33,8 @@ const colors = {
 };
 
 const config = {
-  initialColorMode: localStorage.getItem("chakra-ui-color-mode") || "dark",
-  useSystemColorMode: true,
+  initialColorMode: "dark",
+  useSystemColorMode: false,
 };
 
 const Link = defineStyleConfig({
