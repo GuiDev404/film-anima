@@ -31,7 +31,7 @@ const ResultsSearch = () => {
       data={data?.results ?? []}
       fallbackMessage={
         <>
-          No results for
+          No hay resultados para
           <Text as="strong" color="whiteAlpha.700"> {keyword} </Text>
         </>
       }

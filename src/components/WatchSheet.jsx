@@ -22,13 +22,13 @@ function WatchSheet() {
 
 
             <Section
-              title='Watch'
+              title='Vistas'
               section={state.watches}
               size='sm'
             />
             
             <Section
-              title='WatchList'
+              title='Ver mas tarde'
               section={state.watchlist}
               size='sm'
             />

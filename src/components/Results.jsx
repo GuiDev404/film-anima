@@ -45,7 +45,7 @@ const Results = ({ data, fallbackMessage, nextPage, prevPage, isMaxPage, maxPage
             disabled={currentPage <= 1}
             onClick={prevPage}
           />
-          <Button fontSize=".9rem"> PAGES {currentPage} OF {maxPage ?? 10} </Button>
+          <Button fontSize=".9rem"> PAGINA {currentPage} DE {maxPage ?? 10} </Button>
           <IconButton
             aria-label="Next page"
             disabled={isMaxPage}

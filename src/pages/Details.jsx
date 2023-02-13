@@ -155,10 +155,10 @@ const Details = () => {
             />
             <MenuList>
               <MenuItem icon={<FiEye fontSize="1rem" />} onClick={handleToggleWatch}>
-                {existInWatches ? 'Remove' : 'Watch'}
+                {existInWatches ? 'Eliminar de vista' : 'Vista'}
               </MenuItem>
               <MenuItem icon={<MdOutlineWatchLater fontSize="1rem" />} onClick={handleToggleWatchList}>
-                {existInWatchesList ? 'Remove watchlist' : 'Add to watchlist'}
+                {existInWatchesList ? 'Eliminar de ver mas tarde' : 'Ver mas tarde'}
               </MenuItem>
             </MenuList>
           </Menu>
@@ -297,7 +297,7 @@ const Details = () => {
       {/* RELATIONATED SECTION */}
       {isLoading
         ? <Loader />
-        : relationed && <Section
+        : Boolean(relationed && relationed?.results?.length) &&  <Section
             title={"Relacionadas"}
             link={type === 'movie' ? "/movies" : "/series"}
             section={relationed?.results}

@@ -23,7 +23,7 @@ const Navbar = () => {
 
   const anchor = (
     <Heading fontSize='1.5rem' color='green.200'>
-      <LinkRouter to='/'>FilmAnima</LinkRouter>
+      <LinkRouter to='/'>AnimaFilm</LinkRouter>
     </Heading>
   );
 
